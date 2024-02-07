@@ -1,0 +1,36 @@
+<form>
+  <img src="assets/clubes.png">
+
+  <br><br>
+  <input type="text" placeholder="Nome" class="form-control" name="name" [(ngModel)]="clube.nome">
+  <input type="number" placeholder="Ano" class="form-control" name="age" [(ngModel)]="clube.ano">
+  <input type="text" placeholder="Estado" class="form-control" name="country" [(ngModel)]="clube.estado">
+
+  <input type="button" value="Registrar" *ngIf="btnRegister" class="btn btn-primary" (click)="register()">
+  <input type="button" value="Salvar"     *ngIf="!btnRegister" class="btn btn-warning" (click)="edit()">
+  <input type="button" value="Remover"   *ngIf="!btnRegister" class="btn btn-danger" (click)="delete()">
+  <input type="button" value="Cancelar"   *ngIf="!btnRegister" class="btn btn-secondary" (click)="cancel()">
+
+</form>
+
+<table class="table" *ngIf="table">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Nome</th>
+      <th>Ano</th>
+      <th>Estado</th>
+      <th>.</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let c of clubes index as i">
+      <td>{{i+1}}</td>
+      <td>{{c.nome}}</td>
+      <td>{{c.ano}}</td>
+      <td>{{c.estado}}</td>
+      <td><button class="btn btn-success" (click)="getClubeByPosition(i)">Editar</button></td>
+    </tr>
+  </tbody>
+</table>
